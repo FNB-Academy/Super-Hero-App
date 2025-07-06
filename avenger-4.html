@@ -1,37 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Hero App</title>
+    <title>Hawkeye - Super Hero App</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-      <div id="menu">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+    <div id="menu">
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
     </div>
-    <h2>Hawkeye</h2>
-    <div class="gallery">
-        <img src="images/avengers_04.jpg">
+    <div class="overlay" onclick="closeMenu()"></div>
+    
+    <div class="hero-container">
+        <h2>Hawkeye</h2>
+        
+        <div class="hero-image">
+            <img src="images/avengers_04.jpg" alt="Hawkeye">
+        </div>
+        
+        <div class="bio-section">
+            <h4>Bio</h4>
+            <p><b>Full Name:</b> Clinton Barton</p>
+            <p><b>Place Of Birth:</b> Iowa</p>
+            <p><b>Alignment:</b> Good</p>
+            <p><b>Gender:</b> Male</p>
+            <p><b>Race:</b> Human</p>
+        </div>
+        
+        <div class="power-stats">
+            <h4>Power Stats</h4>
+            <div class="power-stat">
+                <span class="power-stat-label">Intelligence:</span>
+                <div class="power-stat-bar">
+                    <div class="power-stat-fill" style="width: 50%"></div>
+                </div>
+                <span class="power-stat-value">50%</span>
+            </div>
+            <div class="power-stat">
+                <span class="power-stat-label">Strength:</span>
+                <div class="power-stat-bar">
+                    <div class="power-stat-fill" style="width: 12%"></div>
+                </div>
+                <span class="power-stat-value">12%</span>
+            </div>
+            <div class="power-stat">
+                <span class="power-stat-label">Speed:</span>
+                <div class="power-stat-bar">
+                    <div class="power-stat-fill" style="width: 23%"></div>
+                </div>
+                <span class="power-stat-value">23%</span>
+            </div>
+            <div class="power-stat">
+                <span class="power-stat-label">Durability:</span>
+                <div class="power-stat-bar">
+                    <div class="power-stat-fill" style="width: 14%"></div>
+                </div>
+                <span class="power-stat-value">14%</span>
+            </div>
+            <div class="power-stat">
+                <span class="power-stat-label">Power:</span>
+                <div class="power-stat-bar">
+                    <div class="power-stat-fill" style="width: 26%"></div>
+                </div>
+                <span class="power-stat-value">26%</span>
+            </div>
+            <div class="power-stat">
+                <span class="power-stat-label">Combat:</span>
+                <div class="power-stat-bar">
+                    <div class="power-stat-fill" style="width: 80%"></div>
+                </div>
+                <span class="power-stat-value">80%</span>
+            </div>
+        </div>
     </div>
-    <h4>Bio</h4>
-    <p><b>Full Name: </b> Clinton Barton</p>
-    <p><b>Place Of Birth: </b> Iowa</p>
-    <p><b>Alignment: </b> Good</p>
-    <p><b>Gender: </b> Male</p>
-    <p><b>Race: </b> Human</p>
-    <br />
-    <h4>Power Stats</h4>
-    <p><b>Intelligence: </b> 50%</p>
-    <p><b>Strength: </b> 12%</p>
-    <p><b>Speed: </b> 23%</p>
-    <p><b>Durability: </b> 14%</p>
-    <p><b>Power: </b> 26%</p>
-    <p><b>Combat: </b> 80%</p>
-</body>
 
+    <script>
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const overlay = document.querySelector('.overlay');
+            const body = document.body;
+            
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            body.classList.toggle('menu-open');
+        }
+        
+        function closeMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const overlay = document.querySelector('.overlay');
+            const body = document.body;
+            
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+        
+        // Close menu when clicking on nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+        
+        // Close menu when pressing escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
 </html>

@@ -3,17 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About us</title>
+    <title>About Us - Super Hero App</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="menu">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
     </div>
-    <h2>About us</h2>
-    <p>Welcome to our Super Hero App! This application is dedicated to showcasing some of the most iconic superheroes from the Marvel universe. Each hero has their own unique abilities, backstory, and place in the superhero community.</p>
-    <p>Our goal is to provide fans with detailed information about their favorite heroes, including their biographies, power stats, and images. Whether you're a long-time fan or new to the superhero world, we hope you find this app informative and engaging.</p>
+    <div class="overlay" onclick="closeMenu()"></div>
+    
+    <div class="hero-container">
+        <h2>About Us</h2>
+  
+        <div class="bio-section">
+            <h4>Our Mission</h4>
+            <p><b>Purpose:</b> Welcome to our Super Hero App! This application is dedicated to showcasing some of the most iconic superheroes from the Marvel universe.</p>
+            <p><b>Vision:</b> Each hero has their own unique abilities, backstory, and place in the superhero community that we're passionate about sharing.</p>
+            <p><b>Goal:</b> Our goal is to provide fans with detailed information about their favorite heroes, including their biographies, power stats, and stunning visuals.</p>
+        </div>    
+        <div class="bio-section">
+            <h4>For Every Fan</h4>
+            <p><b>New Fans:</b> Whether you're new to the superhero world, we provide accessible introductions to beloved characters.</p>
+            <p><b>Long-time Fans:</b> For veterans of the Marvel universe, discover deeper insights and comprehensive character analyses.</p>
+            <p><b>Community:</b> We hope you find this app informative, engaging, and a worthy addition to your superhero journey.</p>
+            <p><b>Experience:</b> Dive into the extraordinary world of superheroes with immersive profiles and stunning visuals.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const overlay = document.querySelector('.overlay');
+            const body = document.body;
+            
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            body.classList.toggle('menu-open');
+        }
+        
+        function closeMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const overlay = document.querySelector('.overlay');
+            const body = document.body;
+            
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+        
+        // Close menu when clicking on nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+        
+        // Close menu when pressing escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        });
+    </script>
 </body>
 </html>
